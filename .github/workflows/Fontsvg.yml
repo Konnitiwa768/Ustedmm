@@ -20,7 +20,7 @@ jobs:
 
       - name: 🧱 Build TTF font with FontForge script
         run: |
-          fontforge -script build_font.py
+          fontforge -script armodina.py
 
       - name: 📝 Commit and push updated font
         run: |
@@ -37,7 +37,7 @@ jobs:
           git stash pop || true
 
           # 変更をステージしてコミット
-          git add fonts/*.ttf
+          git add *.ttf
           git commit -m "🔤 Update TTF font from SVGs" || echo "No changes to commit"
 
           # push
