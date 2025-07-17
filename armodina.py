@@ -442,6 +442,7 @@ p = g.glyphPen()
 p.moveTo((350, 400))
 p.curveTo((450, 400), (450, 600), (350, 600))
 p.curveTo((250, 600), (250, 400), (350, 400))
+p.closePath()  # まず1つ目の輪郭を閉じる
 p.moveTo((450, 0))
 p.lineTo((450, 100))
 p.lineTo((150, 100))
