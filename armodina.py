@@ -675,6 +675,7 @@ g = font.createChar(ord('x'), 'x')
 p = g.glyphPen()
 p.moveTo((150, 700))
 p.lineTo((450, 0))
+p.closePath()  # まず1つ目の輪郭を閉じる
 p.moveTo((450, 700))
 p.lineTo((150, 0))
 p.closePath()
