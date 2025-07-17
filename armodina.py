@@ -6,7 +6,7 @@ font.fullname = "Otherworld Alternate Font"
 font.familyname = "OtherworldAlt"
 font.encoding = "UnicodeFull"
 
-default_width = 600
+default_width = 700
 
 # A
 g = font.createChar(ord('A'), 'A')
