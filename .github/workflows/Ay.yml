@@ -17,7 +17,9 @@ jobs:
           python-version: "3.11"
 
       - name: 📦 Install requirements
-        run: pip install --upgrade pip
+        run: |
+          pip install --upgrade pip
+          pip install svgwrite     
 
       - name: ▶️ Run generator script
         run: |
