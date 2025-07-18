@@ -11,33 +11,46 @@ all_chars = list("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!?:;.,'\""
 
 def draw_letter(dwg, ch):
     g = dwg.g(stroke="black", fill="none", stroke_width=STROKE_WIDTH)
-
-    # 大文字パラレルアルファベット風
+    
+    # --- 大文字異世界アルファベット風（直線中心・角ばった字形） ---
     if ch == 'A':
-        g.add(dwg.line((30, 85), (45, 20)))
-        g.add(dwg.line((45, 20), (70, 85)))
-        g.add(dwg.line((38, 55), (62, 55)))
+        # 大三角形＋縦線を除く斜線内に小さい逆三角形
+        g.add(dwg.line((25, 80), (50, 20)))
+        g.add(dwg.line((75, 80), (50, 20)))
+        g.add(dwg.line((35, 55), (65, 55)))
+        g.add(dwg.line((45, 55), (50, 70)))
+        g.add(dwg.line((55, 55), (50, 70)))
     elif ch == 'B':
+        # 大文字Bの曲線は角張ったZ字2つ重ね風に
         g.add(dwg.line((30, 20), (30, 80)))
-        g.add(dwg.path(d="M30,20 C60,20 65,40 30,50"))
-        g.add(dwg.path(d="M30,50 C65,60 60,80 30,80"))
+        g.add(dwg.line((30, 20), (60, 30)))
+        g.add(dwg.line((60, 30), (30, 50)))
+        g.add(dwg.line((30, 50), (60, 60)))
+        g.add(dwg.line((60, 60), (30, 80)))
     elif ch == 'C':
-        g.add(dwg.path(d="M70,25 C30,10 20,50 40,75"))
+        # Cは四角形の3辺を使い90度折れ曲がり風
+        g.add(dwg.line((70, 25), (30, 25)))
+        g.add(dwg.line((30, 25), (30, 75)))
+        g.add(dwg.line((30, 75), (70, 75)))
     elif ch == 'D':
+        # Dは三角形を縦に倒したようなイメージで角張る
         g.add(dwg.line((30, 20), (30, 80)))
-        g.add(dwg.path(d="M30,20 C75,30 75,70 30,80"))
+        g.add(dwg.line((30, 20), (65, 50)))
+        g.add(dwg.line((65, 50), (30, 80)))
     elif ch == 'E':
         g.add(dwg.line((70, 20), (30, 20)))
         g.add(dwg.line((30, 20), (30, 80)))
-        g.add(dwg.line((40, 50), (65, 50)))
+        g.add(dwg.line((30, 50), (65, 50)))
         g.add(dwg.line((30, 80), (70, 80)))
     elif ch == 'F':
         g.add(dwg.line((30, 20), (30, 80)))
         g.add(dwg.line((30, 20), (70, 20)))
-        g.add(dwg.line((35, 50), (65, 50)))
+        g.add(dwg.line((30, 50), (65, 50)))
     elif ch == 'G':
-        g.add(dwg.path(d="M65,75 C25,80 30,40 65,45"))
-        g.add(dwg.line((65, 45), (65, 65)))
+        g.add(dwg.line((65, 75), (35, 75)))
+        g.add(dwg.line((35, 75), (35, 45)))
+        g.add(dwg.line((35, 45), (60, 45)))
+        g.add(dwg.line((60, 45), (60, 60)))
     elif ch == 'H':
         g.add(dwg.line((30, 20), (30, 80)))
         g.add(dwg.line((70, 20), (70, 80)))
@@ -47,55 +60,72 @@ def draw_letter(dwg, ch):
         g.add(dwg.line((35, 20), (65, 20)))
         g.add(dwg.line((35, 80), (65, 80)))
     elif ch == 'J':
-        g.add(dwg.line((50, 20), (50, 70)))
-        g.add(dwg.path(d="M50,70 C45,80 30,75 30,65"))
+        g.add(dwg.line((50, 20), (50, 75)))
+        g.add(dwg.line((50, 75), (35, 75)))
+        g.add(dwg.line((35, 75), (35, 65)))
     elif ch == 'K':
         g.add(dwg.line((30, 20), (30, 80)))
-        g.add(dwg.line((30, 50), (65, 30)))
-        g.add(dwg.line((30, 50), (65, 75)))
+        g.add(dwg.line((30, 50), (70, 20)))
+        g.add(dwg.line((30, 50), (70, 80)))
     elif ch == 'L':
         g.add(dwg.line((30, 20), (30, 80)))
         g.add(dwg.line((30, 80), (70, 80)))
     elif ch == 'M':
         g.add(dwg.line((30, 80), (30, 20)))
-        g.add(dwg.line((30, 20), (50, 50)))
-        g.add(dwg.line((50, 50), (70, 20)))
+        g.add(dwg.line((30, 20), (50, 40)))
+        g.add(dwg.line((50, 40), (70, 20)))
         g.add(dwg.line((70, 20), (70, 80)))
+        g.add(dwg.line((50, 40), (50, 80)))
     elif ch == 'N':
         g.add(dwg.line((30, 80), (30, 20)))
         g.add(dwg.line((30, 20), (70, 80)))
         g.add(dwg.line((70, 80), (70, 20)))
     elif ch == 'O':
-        g.add(dwg.circle(center=(50, 50), r=32))
-        g.add(dwg.line((50, 20), (50, 80)))
+        g.add(dwg.line((35, 30), (65, 30)))
+        g.add(dwg.line((65, 30), (65, 70)))
+        g.add(dwg.line((65, 70), (35, 70)))
+        g.add(dwg.line((35, 70), (35, 30)))
     elif ch == 'P':
         g.add(dwg.line((30, 20), (30, 80)))
-        g.add(dwg.path(d="M30,20 C70,20 70,50 30,50"))
+        g.add(dwg.line((30, 20), (60, 30)))
+        g.add(dwg.line((60, 30), (60, 50)))
+        g.add(dwg.line((60, 50), (30, 50)))
     elif ch == 'Q':
-        g.add(dwg.circle(center=(50, 50), r=32))
-        g.add(dwg.line((60, 70), (80, 90)))
+        g.add(dwg.line((35, 30), (65, 30)))
+        g.add(dwg.line((65, 30), (65, 70)))
+        g.add(dwg.line((65, 70), (35, 70)))
+        g.add(dwg.line((35, 70), (35, 30)))
+        g.add(dwg.line((55, 65), (75, 85)))
     elif ch == 'R':
         g.add(dwg.line((30, 20), (30, 80)))
-        g.add(dwg.path(d="M30,20 C70,20 70,50 30,50"))
-        g.add(dwg.line((40, 50), (75, 80)))
+        g.add(dwg.line((30, 20), (60, 30)))
+        g.add(dwg.line((60, 30), (30, 50)))
+        g.add(dwg.line((30, 50), (60, 80)))
     elif ch == 'S':
-        g.add(dwg.path(d="M70,20 C35,20 30,40 60,50 C90,60 35,80 30,80"))
+        g.add(dwg.line((60, 20), (35, 20)))
+        g.add(dwg.line((35, 20), (30, 40)))
+        g.add(dwg.line((30, 40), (60, 60)))
+        g.add(dwg.line((60, 60), (35, 80)))
+        g.add(dwg.line((35, 80), (70, 80)))
     elif ch == 'T':
         g.add(dwg.line((50, 20), (50, 80)))
         g.add(dwg.line((30, 20), (70, 20)))
     elif ch == 'U':
-        g.add(dwg.path(d="M30,20 L30,65 C40,90 60,90 70,65 L70,20"))
+        g.add(dwg.line((30, 20), (30, 70)))
+        g.add(dwg.line((30, 70), (50, 80)))
+        g.add(dwg.line((50, 80), (70, 70)))
+        g.add(dwg.line((70, 70), (70, 20)))
     elif ch == 'V':
         g.add(dwg.line((30, 20), (50, 80)))
         g.add(dwg.line((70, 20), (50, 80)))
     elif ch == 'W':
-        g.add(dwg.line((25, 20), (40, 80)))
-        g.add(dwg.line((40, 80), (55, 20)))
-        g.add(dwg.line((55, 20), (70, 80)))
-        g.add(dwg.line((70, 80), (85, 20)))
+        g.add(dwg.line((20, 20), (35, 80)))
+        g.add(dwg.line((35, 80), (50, 40)))
+        g.add(dwg.line((50, 40), (65, 80)))
+        g.add(dwg.line((65, 80), (80, 20)))
     elif ch == 'X':
-        g.add(dwg.line((30, 30), (70, 70)))
-        g.add(dwg.line((70, 30), (30, 70)))
+        g.add(dwg.line((30, 20), (70, 80)))
+        g.add(dwg.line((70, 20), (30, 80)))
     elif ch == 'Y':
         g.add(dwg.line((30, 20), (50, 50)))
         g.add(dwg.line((70, 20), (50, 50)))
@@ -105,122 +135,158 @@ def draw_letter(dwg, ch):
         g.add(dwg.line((70, 20), (30, 80)))
         g.add(dwg.line((30, 80), (70, 80)))
 
-    # 小文字パラレルアルファベット風
+    # --- 小文字異世界アルファベット風 ---
     elif ch == 'a':
-        g.add(dwg.circle(center=(50, 60), r=18))
-        g.add(dwg.line((68, 60), (68, 90)))
+        g.add(dwg.line((35, 70), (65, 70)))
+        g.add(dwg.line((65, 70), (65, 90)))
+        g.add(dwg.line((65, 90), (35, 90)))
+        g.add(dwg.line((35, 90), (35, 70)))
+        g.add(dwg.line((50, 50), (50, 70)))
     elif ch == 'b':
-        g.add(dwg.line((30, 30), (30, 90)))
-        g.add(dwg.path(d="M30,50 C60,40 60,80 30,70"))
+        g.add(dwg.line((30, 50), (30, 90)))
+        g.add(dwg.line((30, 50), (60, 50)))
+        g.add(dwg.line((60, 50), (60, 70)))
+        g.add(dwg.line((60, 70), (30, 70)))
     elif ch == 'c':
-        g.add(dwg.path(d="M65,40 C40,30 30,70 60,70"))
+        g.add(dwg.line((65, 70), (35, 70)))
+        g.add(dwg.line((35, 70), (35, 90)))
+        g.add(dwg.line((35, 90), (65, 90)))
     elif ch == 'd':
-        g.add(dwg.line((70, 30), (70, 90)))
-        g.add(dwg.path(d="M70,50 C40,40 40,80 70,70"))
+        g.add(dwg.line((65, 50), (65, 90)))
+        g.add(dwg.line((65, 50), (35, 50)))
+        g.add(dwg.line((35, 50), (35, 70)))
+        g.add(dwg.line((35, 70), (65, 70)))
     elif ch == 'e':
-        g.add(dwg.path(d="M65,60 C40,40 35,60 60,65 C65,70 35,75 65,65"))
+        g.add(dwg.line((35, 70), (65, 70)))
+        g.add(dwg.line((35, 70), (35, 90)))
+        g.add(dwg.line((35, 90), (65, 90)))
+        g.add(dwg.line((65, 70), (65, 80)))
+        g.add(dwg.line((35, 80), (65, 80)))
     elif ch == 'f':
-        g.add(dwg.line((50, 20), (50, 80)))
-        g.add(dwg.line((30, 35), (65, 35)))
+        g.add(dwg.line((50, 40), (50, 90)))
+        g.add(dwg.line((30, 60), (70, 60)))
     elif ch == 'g':
-        g.add(dwg.circle(center=(50, 60), r=18))
-        g.add(dwg.line((62, 65), (70, 100)))
+        g.add(dwg.line((35, 70), (65, 70)))
+        g.add(dwg.line((65, 70), (65, 90)))
+        g.add(dwg.line((65, 90), (35, 90)))
+        g.add(dwg.line((35, 90), (35, 80)))
+        g.add(dwg.line((35, 80), (50, 80)))
     elif ch == 'h':
-        g.add(dwg.line((30, 20), (30, 80)))
-        g.add(dwg.line((30, 60), (60, 60)))
-        g.add(dwg.line((60, 60), (60, 90)))
+        g.add(dwg.line((30, 40), (30, 90)))
+        g.add(dwg.line((30, 70), (65, 70)))
+        g.add(dwg.line((65, 70), (65, 90)))
     elif ch == 'i':
         g.add(dwg.line((50, 50), (50, 90)))
-        g.add(dwg.circle(center=(50, 35), r=4))
+        g.add(dwg.line((45, 50), (55, 50)))
     elif ch == 'j':
         g.add(dwg.line((50, 50), (50, 90)))
-        g.add(dwg.path(d="M50,90 C45,100 35,95 35,85"))
-        g.add(dwg.circle(center=(50, 35), r=4))
+        g.add(dwg.line((50, 90), (40, 90)))
+        g.add(dwg.line((40, 90), (40, 80)))
+        g.add(dwg.line((45, 50), (55, 50)))
     elif ch == 'k':
-        g.add(dwg.line((30, 20), (30, 90)))
-        g.add(dwg.line((30, 60), (65, 40)))
-        g.add(dwg.line((30, 60), (65, 90)))
+        g.add(dwg.line((30, 40), (30, 90)))
+        g.add(dwg.line((30, 70), (65, 50)))
+        g.add(dwg.line((30, 70), (65, 90)))
     elif ch == 'l':
-        g.add(dwg.line((50, 20), (50, 90)))
+        g.add(dwg.line((50, 40), (50, 90)))
     elif ch == 'm':
-        g.add(dwg.line((20, 60), (20, 90)))
-        g.add(dwg.line((20, 60), (40, 60)))
-        g.add(dwg.line((40, 60), (40, 90)))
-        g.add(dwg.line((40, 60), (60, 60)))
-        g.add(dwg.line((60, 60), (60, 90)))
+        g.add(dwg.line((25, 70), (25, 90)))
+        g.add(dwg.line((25, 70), (40, 70)))
+        g.add(dwg.line((40, 70), (40, 90)))
+        g.add(dwg.line((40, 70), (55, 70)))
+        g.add(dwg.line((55, 70), (55, 90)))
     elif ch == 'n':
-        g.add(dwg.line((30, 60), (30, 90)))
-        g.add(dwg.line((30, 60), (65, 60)))
-        g.add(dwg.line((65, 60), (65, 90)))
+        g.add(dwg.line((30, 70), (30, 90)))
+        g.add(dwg.line((30, 70), (65, 70)))
+        g.add(dwg.line((65, 70), (65, 90)))
     elif ch == 'o':
-        g.add(dwg.circle(center=(50, 70), r=20))
+        g.add(dwg.line((35, 70), (65, 70)))
+        g.add(dwg.line((65, 70), (65, 90)))
+        g.add(dwg.line((65, 90), (35, 90)))
+        g.add(dwg.line((35, 90), (35, 70)))
     elif ch == 'p':
-        g.add(dwg.line((30, 50), (30, 110)))
-        g.add(dwg.circle(center=(50, 70), r=18))
+        g.add(dwg.line((30, 50), (30, 90)))
+        g.add(dwg.line((30, 50), (60, 50)))
+        g.add(dwg.line((60, 50), (60, 70)))
+        g.add(dwg.line((60, 70), (30, 70)))
     elif ch == 'q':
-        g.add(dwg.line((70, 50), (70, 110)))
-        g.add(dwg.circle(center=(50, 70), r=18))
+        g.add(dwg.line((65, 50), (65, 90)))
+        g.add(dwg.line((65, 50), (35, 50)))
+        g.add(dwg.line((35, 50), (35, 70)))
+        g.add(dwg.line((35, 70), (65, 70)))
     elif ch == 'r':
-        g.add(dwg.line((30, 60), (30, 90)))
-        g.add(dwg.line((30, 60), (60, 60)))
+        g.add(dwg.line((30, 70), (30, 90)))
+        g.add(dwg.line((30, 70), (60, 70)))
     elif ch == 's':
-        g.add(dwg.path(d="M65,70 C50,50 30,65 60,80"))
+        g.add(dwg.line((60, 70), (35, 70)))
+        g.add(dwg.line((35, 70), (30, 80)))
+        g.add(dwg.line((30, 80), (60, 90)))
+        g.add(dwg.line((60, 90), (35, 90)))
+        g.add(dwg.line((35, 90), (70, 90)))
     elif ch == 't':
-        g.add(dwg.line((50, 30), (50, 90)))
-        g.add(dwg.line((30, 45), (70, 45)))
+        g.add(dwg.line((50, 50), (50, 90)))
+        g.add(dwg.line((30, 60), (70, 60)))
     elif ch == 'u':
-        g.add(dwg.path(d="M30,60 L30,90 C50,110 65,90 65,60"))
+        g.add(dwg.line((30, 70), (30, 90)))
+        g.add(dwg.line((30, 90), (50, 90)))
+        g.add(dwg.line((50, 90), (65, 80)))
+        g.add(dwg.line((65, 80), (65, 70)))
     elif ch == 'v':
-        g.add(dwg.line((30, 60), (50, 90)))
-        g.add(dwg.line((65, 60), (50, 90)))
+        g.add(dwg.line((30, 70), (50, 90)))
+        g.add(dwg.line((65, 70), (50, 90)))
     elif ch == 'w':
-        g.add(dwg.line((20, 60), (35, 90)))
-        g.add(dwg.line((35, 90), (50, 65)))
-        g.add(dwg.line((50, 65), (65, 90)))
-        g.add(dwg.line((65, 90), (80, 60)))
+        g.add(dwg.line((20, 70), (35, 90)))
+        g.add(dwg.line((35, 90), (50, 70)))
+        g.add(dwg.line((50, 70), (65, 90)))
+        g.add(dwg.line((65, 90), (80, 70)))
     elif ch == 'x':
-        g.add(dwg.line((30, 65), (70, 90)))
-        g.add(dwg.line((70, 65), (30, 90)))
+        g.add(dwg.line((30, 70), (70, 90)))
+        g.add(dwg.line((70, 70), (30, 90)))
     elif ch == 'y':
-        g.add(dwg.line((30, 60), (50, 90)))
-        g.add(dwg.line((70, 60), (50, 90)))
+        g.add(dwg.line((30, 70), (50, 90)))
+        g.add(dwg.line((70, 70), (50, 90)))
         g.add(dwg.line((50, 90), (50, 110)))
     elif ch == 'z':
-        g.add(dwg.line((30, 60), (70, 60)))
-        g.add(dwg.line((70, 60), (30, 90)))
+        g.add(dwg.line((30, 70), (70, 70)))
+        g.add(dwg.line((70, 70), (30, 90)))
         g.add(dwg.line((30, 90), (70, 90)))
 
-    # 記号パラレル風
+    # --- 記号異世界アルファベット風 ---
     elif ch == '!':
-        g.add(dwg.line((50, 25), (50, 65)))
-        g.add(dwg.circle(center=(50, 80), r=3))
+        g.add(dwg.line((50, 25), (50, 60)))
+        g.add(dwg.line((50, 70), (50, 80)))
+        g.add(dwg.line((50, 90), (50, 95)))
     elif ch == '?':
-        g.add(dwg.path(d="M35,30 C50,10 70,30 50,50"))
-        g.add(dwg.path(d="M50,50 L50,60"))
-        g.add(dwg.circle(center=(50, 75), r=4))
+        g.add(dwg.line((50, 25), (50, 40)))
+        g.add(dwg.line((50, 40), (60, 50)))
+        g.add(dwg.line((60, 50), (50, 60)))
+        g.add(dwg.line((50, 60), (50, 70)))
+        g.add(dwg.line((50, 90), (50, 95)))
     elif ch == ':':
-        g.add(dwg.circle(center=(50, 35), r=5))
-        g.add(dwg.circle(center=(50, 65), r=5))
+        g.add(dwg.line((50, 40), (50, 45)))
+        g.add(dwg.line((50, 60), (50, 65)))
     elif ch == ';':
-        g.add(dwg.circle(center=(50, 35), r=5))
-        g.add(dwg.path(d="M50,65 Q45,75 55,85"))
+        g.add(dwg.line((50, 40), (50, 45)))
+        g.add(dwg.line((50, 60), (50, 65)))
+        g.add(dwg.line((50, 70), (45, 80)))
     elif ch == '.':
-        g.add(dwg.circle(center=(50, 80), r=5))
+        g.add(dwg.line((50, 90), (50, 95)))
     elif ch == ',':
-        g.add(dwg.path(d="M50,75 Q45,85 55,95"))
+        g.add(dwg.line((50, 90), (50, 95)))
+        g.add(dwg.line((50, 95), (45, 105)))
     elif ch == "'":
-        g.add(dwg.line((50, 20), (50, 40)))
+        g.add(dwg.line((55, 25), (55, 45)))
     elif ch == '"':
-        g.add(dwg.line((40, 20), (40, 40)))
-        g.add(dwg.line((60, 20), (60, 40)))
+        g.add(dwg.line((45, 25), (45, 45)))
+        g.add(dwg.line((60, 25), (60, 45)))
+    else:
+        # もし未知の文字なら大きなXを描く
+        g.add(dwg.line((30, 20), (70, 80)))
+        g.add(dwg.line((70, 20), (30, 80)))
 
-    dwg.add(g)
+    return g
 
 for ch in all_chars:
-    fname = ch if ch.isalnum() else f"symbol_{ord(ch)}"
-    filename = os.path.join(output_dir, f"{fname}.svg")
-    dwg = svgwrite.Drawing(filename, size=(WIDTH, HEIGHT), viewBox="0 0 100 100")
-    draw_letter(dwg, ch)
+    dwg = svgwrite.Drawing(filename=os.path.join(output_dir, f"{ch}.svg"), size=(WIDTH, HEIGHT))
+    dwg.add(draw_letter(dwg, ch))
     dwg.save()
-
-print("✅ 対応しないがアルファベットっぽい独自字形をstroke3_letters_parallel/にすべて保存しました。")
