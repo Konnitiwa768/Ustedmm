@@ -1,3 +1,11 @@
+! - ras
+" - wen
+' - yol
+, - yes
+..svg - hos
+: - han
+; - zong
+? - tai
 A - sais
 B - kao
 C - til
@@ -43,6 +51,14 @@ p - gel
 q - tes
 r - zing
 s - huang
+sym_33 - nul
+sym_34 - hong
+sym_39 - kung
+sym_44 - kuong
+sym_46 - xang
+sym_58 - zeng
+sym_59 - pil
+sym_63 - naong
 symbol_33 - nan
 symbol_34 - dang
 symbol_39 - tual
