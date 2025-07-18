@@ -5,155 +5,222 @@ output_dir = "letters"
 os.makedirs(output_dir, exist_ok=True)
 
 WIDTH, HEIGHT = 100, 100
-STROKE_WIDTH = 4
+STROKE_WIDTH = 3
+
 all_chars = list("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!?:;.,'\"")
 
-def draw_parallel_letter(dwg, char):
+def draw_letter(dwg, ch):
     g = dwg.g(stroke="black", fill="none", stroke_width=STROKE_WIDTH)
 
-    # === パラレルワールド風の文字デザイン例 ===
-    if char == 'A':
-        g.add(dwg.path(d="M 20,90 L 50,10 L 80,90 L 50,70 Z"))
-    elif char == 'B':
-        g.add(dwg.path(d="M 20,10 L 20,90 Q 80,40 20,60 Q 80,80 20,90"))
-    elif char == 'C':
-        g.add(dwg.path(d="M 80,20 Q 40,10 20,50 Q 40,90 80,80 Q 70,70 65,65"))
-    elif char == 'D':
-        g.add(dwg.path(d="M 20,10 L 20,90 Q 90,50 20,10"))
-    elif char == 'E':
-        g.add(dwg.path(d="M 80,10 L 20,10 L 20,90 L 80,90 M 20,50 L 60,50"))
-    elif char == 'F':
-        g.add(dwg.path(d="M 20,10 L 20,90 M 20,10 L 80,10 M 20,50 L 60,50"))
-    elif char == 'G':
-        g.add(dwg.path(d="M 80,20 Q 30,0 20,50 Q 40,90 80,80 L 60,60"))
-    elif char == 'H':
-        g.add(dwg.path(d="M 20,10 L 20,90 M 80,10 L 80,90 M 20,50 L 80,50"))
-    elif char == 'I':
-        g.add(dwg.path(d="M 50,10 L 50,90 M 30,10 L 70,10 M 30,90 L 70,90"))
-    elif char == 'J':
-        g.add(dwg.path(d="M 70,10 L 70,70 Q 60,100 30,80"))
-    elif char == 'K':
-        g.add(dwg.path(d="M 20,10 L 20,90 M 20,50 L 80,10 M 20,50 L 80,90"))
-    elif char == 'L':
-        g.add(dwg.path(d="M 20,10 L 20,90 L 80,90"))
-    elif char == 'M':
-        g.add(dwg.path(d="M 20,90 L 20,10 L 50,60 L 80,10 L 80,90"))
-    elif char == 'N':
-        g.add(dwg.path(d="M 20,90 L 20,10 L 80,90 L 80,10"))
-    elif char == 'O':
-        g.add(dwg.path(d="M 50,10 Q 90,50 50,90 Q 10,50 50,10 Z"))
-    elif char == 'P':
-        g.add(dwg.path(d="M 20,10 L 20,90 M 20,10 Q 80,30 20,50"))
-    elif char == 'Q':
-        g.add(dwg.circle(center=(50, 50), r=35))
-        g.add(dwg.line((50, 50), (90, 90)))
-    elif char == 'R':
-        g.add(dwg.path(d="M 20,10 L 20,90 M 20,10 Q 80,30 20,50 L 80,90"))
-    elif char == 'S':
-        g.add(dwg.path(d="M 80,20 Q 50,0 20,30 Q 50,50 20,70 Q 50,90 80,80"))
-    elif char == 'T':
-        g.add(dwg.path(d="M 50,10 L 50,90 M 20,10 L 80,10"))
-    elif char == 'U':
-        g.add(dwg.path(d="M 20,10 L 20,60 Q 50,90 80,60 L 80,10"))
-    elif char == 'V':
-        g.add(dwg.path(d="M 20,10 L 50,90 L 80,10"))
-    elif char == 'W':
-        g.add(dwg.path(d="M 20,10 L 35,90 L 50,30 L 65,90 L 80,10"))
-    elif char == 'X':
-        g.add(dwg.path(d="M 20,20 L 80,80 M 80,20 L 20,80"))
-    elif char == 'Y':
-        g.add(dwg.path(d="M 20,10 L 50,50 L 80,10 M 50,50 L 50,90"))
-    elif char == 'Z':
-        g.add(dwg.path(d="M 20,10 L 80,10 L 20,90 L 80,90"))
+    # 大文字パラレルアルファベット風
+    if ch == 'A':
+        g.add(dwg.line((30, 85), (45, 20)))
+        g.add(dwg.line((45, 20), (70, 85)))
+        g.add(dwg.line((38, 55), (62, 55)))
+    elif ch == 'B':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.path(d="M30,20 C60,20 65,40 30,50"))
+        g.add(dwg.path(d="M30,50 C65,60 60,80 30,80"))
+    elif ch == 'C':
+        g.add(dwg.path(d="M70,25 C30,10 20,50 40,75"))
+    elif ch == 'D':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.path(d="M30,20 C75,30 75,70 30,80"))
+    elif ch == 'E':
+        g.add(dwg.line((70, 20), (30, 20)))
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.line((40, 50), (65, 50)))
+        g.add(dwg.line((30, 80), (70, 80)))
+    elif ch == 'F':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.line((30, 20), (70, 20)))
+        g.add(dwg.line((35, 50), (65, 50)))
+    elif ch == 'G':
+        g.add(dwg.path(d="M65,75 C25,80 30,40 65,45"))
+        g.add(dwg.line((65, 45), (65, 65)))
+    elif ch == 'H':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.line((70, 20), (70, 80)))
+        g.add(dwg.line((30, 50), (70, 50)))
+    elif ch == 'I':
+        g.add(dwg.line((50, 20), (50, 80)))
+        g.add(dwg.line((35, 20), (65, 20)))
+        g.add(dwg.line((35, 80), (65, 80)))
+    elif ch == 'J':
+        g.add(dwg.line((50, 20), (50, 70)))
+        g.add(dwg.path(d="M50,70 C45,80 30,75 30,65"))
+    elif ch == 'K':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.line((30, 50), (65, 30)))
+        g.add(dwg.line((30, 50), (65, 75)))
+    elif ch == 'L':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.line((30, 80), (70, 80)))
+    elif ch == 'M':
+        g.add(dwg.line((30, 80), (30, 20)))
+        g.add(dwg.line((30, 20), (50, 50)))
+        g.add(dwg.line((50, 50), (70, 20)))
+        g.add(dwg.line((70, 20), (70, 80)))
+    elif ch == 'N':
+        g.add(dwg.line((30, 80), (30, 20)))
+        g.add(dwg.line((30, 20), (70, 80)))
+        g.add(dwg.line((70, 80), (70, 20)))
+    elif ch == 'O':
+        g.add(dwg.circle(center=(50, 50), r=32))
+        g.add(dwg.line((50, 20), (50, 80)))
+    elif ch == 'P':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.path(d="M30,20 C70,20 70,50 30,50"))
+    elif ch == 'Q':
+        g.add(dwg.circle(center=(50, 50), r=32))
+        g.add(dwg.line((60, 70), (80, 90)))
+    elif ch == 'R':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.path(d="M30,20 C70,20 70,50 30,50"))
+        g.add(dwg.line((40, 50), (75, 80)))
+    elif ch == 'S':
+        g.add(dwg.path(d="M70,20 C35,20 30,40 60,50 C90,60 35,80 30,80"))
+    elif ch == 'T':
+        g.add(dwg.line((50, 20), (50, 80)))
+        g.add(dwg.line((30, 20), (70, 20)))
+    elif ch == 'U':
+        g.add(dwg.path(d="M30,20 L30,65 C40,90 60,90 70,65 L70,20"))
+    elif ch == 'V':
+        g.add(dwg.line((30, 20), (50, 80)))
+        g.add(dwg.line((70, 20), (50, 80)))
+    elif ch == 'W':
+        g.add(dwg.line((25, 20), (40, 80)))
+        g.add(dwg.line((40, 80), (55, 20)))
+        g.add(dwg.line((55, 20), (70, 80)))
+        g.add(dwg.line((70, 80), (85, 20)))
+    elif ch == 'X':
+        g.add(dwg.line((30, 30), (70, 70)))
+        g.add(dwg.line((70, 30), (30, 70)))
+    elif ch == 'Y':
+        g.add(dwg.line((30, 20), (50, 50)))
+        g.add(dwg.line((70, 20), (50, 50)))
+        g.add(dwg.line((50, 50), (50, 80)))
+    elif ch == 'Z':
+        g.add(dwg.line((30, 20), (70, 20)))
+        g.add(dwg.line((70, 20), (30, 80)))
+        g.add(dwg.line((30, 80), (70, 80)))
 
-    # 小文字 a-z（それぞれ独自デザイン）
-    elif char == 'a':
-        g.add(dwg.path(d="M 50,70 Q 30,50 50,30 Q 70,50 50,70 Z"))
-    elif char == 'b':
-        g.add(dwg.path(d="M 30,10 L 30,90 Q 70,60 30,50"))
-    elif char == 'c':
-        g.add(dwg.path(d="M 70,40 Q 30,10 20,50 Q 40,90 70,70"))
-    elif char == 'd':
-        g.add(dwg.path(d="M 70,10 L 70,90 Q 30,60 70,50"))
-    elif char == 'e':
-        g.add(dwg.path(d="M 30,50 Q 50,30 70,50 Q 50,70 30,50"))
-    elif char == 'f':
-        g.add(dwg.path(d="M 50,10 L 50,90 M 30,40 L 70,40"))
-    elif char == 'g':
-        g.add(dwg.circle(center=(50, 50), r=20))
-        g.add(dwg.path(d="M 60,60 Q 80,90 50,110"))
-    elif char == 'h':
-        g.add(dwg.path(d="M 30,10 L 30,90 M 30,60 Q 70,40 70,90"))
-    elif char == 'i':
-        g.add(dwg.circle(center=(50, 25), r=5))
-        g.add(dwg.line((50, 40), (50, 90)))
-    elif char == 'j':
-        g.add(dwg.circle(center=(60, 25), r=5))
-        g.add(dwg.path(d="M 60,40 L 60,100 Q 50,110 40,90"))
-    elif char == 'k':
-        g.add(dwg.path(d="M 30,10 L 30,90 M 30,60 L 70,30 M 30,60 L 70,90"))
-    elif char == 'l':
-        g.add(dwg.path(d="M 50,10 L 50,90"))
-    elif char == 'm':
-        g.add(dwg.path(d="M 20,60 L 20,90 M 20,60 Q 40,40 40,60 L 40,90 M 40,60 Q 60,40 60,60 L 60,90"))
-    elif char == 'n':
-        g.add(dwg.path(d="M 30,60 L 30,90 M 30,60 Q 70,40 70,90"))
-    elif char == 'o':
+    # 小文字パラレルアルファベット風
+    elif ch == 'a':
+        g.add(dwg.circle(center=(50, 60), r=18))
+        g.add(dwg.line((68, 60), (68, 90)))
+    elif ch == 'b':
+        g.add(dwg.line((30, 30), (30, 90)))
+        g.add(dwg.path(d="M30,50 C60,40 60,80 30,70"))
+    elif ch == 'c':
+        g.add(dwg.path(d="M65,40 C40,30 30,70 60,70"))
+    elif ch == 'd':
+        g.add(dwg.line((70, 30), (70, 90)))
+        g.add(dwg.path(d="M70,50 C40,40 40,80 70,70"))
+    elif ch == 'e':
+        g.add(dwg.path(d="M65,60 C40,40 35,60 60,65 C65,70 35,75 65,65"))
+    elif ch == 'f':
+        g.add(dwg.line((50, 20), (50, 80)))
+        g.add(dwg.line((30, 35), (65, 35)))
+    elif ch == 'g':
+        g.add(dwg.circle(center=(50, 60), r=18))
+        g.add(dwg.line((62, 65), (70, 100)))
+    elif ch == 'h':
+        g.add(dwg.line((30, 20), (30, 80)))
+        g.add(dwg.line((30, 60), (60, 60)))
+        g.add(dwg.line((60, 60), (60, 90)))
+    elif ch == 'i':
+        g.add(dwg.line((50, 50), (50, 90)))
+        g.add(dwg.circle(center=(50, 35), r=4))
+    elif ch == 'j':
+        g.add(dwg.line((50, 50), (50, 90)))
+        g.add(dwg.path(d="M50,90 C45,100 35,95 35,85"))
+        g.add(dwg.circle(center=(50, 35), r=4))
+    elif ch == 'k':
+        g.add(dwg.line((30, 20), (30, 90)))
+        g.add(dwg.line((30, 60), (65, 40)))
+        g.add(dwg.line((30, 60), (65, 90)))
+    elif ch == 'l':
+        g.add(dwg.line((50, 20), (50, 90)))
+    elif ch == 'm':
+        g.add(dwg.line((20, 60), (20, 90)))
+        g.add(dwg.line((20, 60), (40, 60)))
+        g.add(dwg.line((40, 60), (40, 90)))
+        g.add(dwg.line((40, 60), (60, 60)))
+        g.add(dwg.line((60, 60), (60, 90)))
+    elif ch == 'n':
+        g.add(dwg.line((30, 60), (30, 90)))
+        g.add(dwg.line((30, 60), (65, 60)))
+        g.add(dwg.line((65, 60), (65, 90)))
+    elif ch == 'o':
         g.add(dwg.circle(center=(50, 70), r=20))
-    elif char == 'p':
-        g.add(dwg.path(d="M 30,40 L 30,110 Q 70,80 30,60"))
-    elif char == 'q':
-        g.add(dwg.path(d="M 70,40 L 70,110 Q 30,80 70,60"))
-    elif char == 'r':
-        g.add(dwg.path(d="M 30,60 L 30,90 M 30,60 Q 60,40 60,60"))
-    elif char == 's':
-        g.add(dwg.path(d="M 70,60 Q 50,40 30,60 Q 50,80 70,70"))
-    elif char == 't':
-        g.add(dwg.path(d="M 50,10 L 50,90 M 30,30 L 70,30"))
-    elif char == 'u':
-        g.add(dwg.path(d="M 30,60 L 30,90 Q 50,110 70,90 L 70,60"))
-    elif char == 'v':
-        g.add(dwg.path(d="M 30,60 L 50,90 L 70,60"))
-    elif char == 'w':
-        g.add(dwg.path(d="M 20,60 L 35,90 L 50,60 L 65,90 L 80,60"))
-    elif char == 'x':
-        g.add(dwg.path(d="M 30,60 L 70,90 M 70,60 L 30,90"))
-    elif char == 'y':
-        g.add(dwg.path(d="M 30,60 L 50,90 L 70,60 M 50,90 L 50,110"))
-    elif char == 'z':
-        g.add(dwg.path(d="M 30,60 L 70,60 L 30,90 L 70,90"))
+    elif ch == 'p':
+        g.add(dwg.line((30, 50), (30, 110)))
+        g.add(dwg.circle(center=(50, 70), r=18))
+    elif ch == 'q':
+        g.add(dwg.line((70, 50), (70, 110)))
+        g.add(dwg.circle(center=(50, 70), r=18))
+    elif ch == 'r':
+        g.add(dwg.line((30, 60), (30, 90)))
+        g.add(dwg.line((30, 60), (60, 60)))
+    elif ch == 's':
+        g.add(dwg.path(d="M65,70 C50,50 30,65 60,80"))
+    elif ch == 't':
+        g.add(dwg.line((50, 30), (50, 90)))
+        g.add(dwg.line((30, 45), (70, 45)))
+    elif ch == 'u':
+        g.add(dwg.path(d="M30,60 L30,90 C50,110 65,90 65,60"))
+    elif ch == 'v':
+        g.add(dwg.line((30, 60), (50, 90)))
+        g.add(dwg.line((65, 60), (50, 90)))
+    elif ch == 'w':
+        g.add(dwg.line((20, 60), (35, 90)))
+        g.add(dwg.line((35, 90), (50, 65)))
+        g.add(dwg.line((50, 65), (65, 90)))
+        g.add(dwg.line((65, 90), (80, 60)))
+    elif ch == 'x':
+        g.add(dwg.line((30, 65), (70, 90)))
+        g.add(dwg.line((70, 65), (30, 90)))
+    elif ch == 'y':
+        g.add(dwg.line((30, 60), (50, 90)))
+        g.add(dwg.line((70, 60), (50, 90)))
+        g.add(dwg.line((50, 90), (50, 110)))
+    elif ch == 'z':
+        g.add(dwg.line((30, 60), (70, 60)))
+        g.add(dwg.line((70, 60), (30, 90)))
+        g.add(dwg.line((30, 90), (70, 90)))
 
-    # 記号（パラレル風）
-    elif char == '!':
-        g.add(dwg.path(d="M 50,20 L 50,70"))
-        g.add(dwg.circle(center=(50, 85), r=5))
-    elif char == '?':
-        g.add(dwg.path(d="M 30,30 Q 50,10 70,30 Q 70,50 50,60 L 50,70"))
-        g.add(dwg.circle(center=(50, 85), r=5))
-    elif char == ':':
-        g.add(dwg.circle(center=(50, 30), r=5))
-        g.add(dwg.circle(center=(50, 70), r=5))
-    elif char == ';':
-        g.add(dwg.circle(center=(50, 30), r=5))
-        g.add(dwg.path(d="M 50,70 Q 45,85 55,95"))
-    elif char == '.':
-        g.add(dwg.circle(center=(50, 85), r=5))
-    elif char == ',':
-        g.add(dwg.path(d="M 50,80 Q 45,90 55,100"))
-    elif char == "'":
+    # 記号パラレル風
+    elif ch == '!':
+        g.add(dwg.line((50, 25), (50, 65)))
+        g.add(dwg.circle(center=(50, 80), r=3))
+    elif ch == '?':
+        g.add(dwg.path(d="M35,30 C50,10 70,30 50,50"))
+        g.add(dwg.path(d="M50,50 L50,60"))
+        g.add(dwg.circle(center=(50, 75), r=4))
+    elif ch == ':':
+        g.add(dwg.circle(center=(50, 35), r=5))
+        g.add(dwg.circle(center=(50, 65), r=5))
+    elif ch == ';':
+        g.add(dwg.circle(center=(50, 35), r=5))
+        g.add(dwg.path(d="M50,65 Q45,75 55,85"))
+    elif ch == '.':
+        g.add(dwg.circle(center=(50, 80), r=5))
+    elif ch == ',':
+        g.add(dwg.path(d="M50,75 Q45,85 55,95"))
+    elif ch == "'":
         g.add(dwg.line((50, 20), (50, 40)))
-    elif char == '"':
+    elif ch == '"':
         g.add(dwg.line((40, 20), (40, 40)))
         g.add(dwg.line((60, 20), (60, 40)))
 
     dwg.add(g)
 
-# 書き出し処理
 for ch in all_chars:
     fname = ch if ch.isalnum() else f"symbol_{ord(ch)}"
-    filepath = os.path.join(output_dir, f"{fname}.svg")
-    dwg = svgwrite.Drawing(filepath, size=(WIDTH, HEIGHT), viewBox="0 0 100 100")
-    draw_parallel_letter(dwg, ch)
+    filename = os.path.join(output_dir, f"{fname}.svg")
+    dwg = svgwrite.Drawing(filename, size=(WIDTH, HEIGHT), viewBox="0 0 100 100")
+    draw_letter(dwg, ch)
     dwg.save()
 
-print("✅ パラレル風アルファベット 66文字を完全に描画し出力しました。")
+print("✅ 対応しないがアルファベットっぽい独自字形をstroke3_letters_parallel/にすべて保存しました。")
