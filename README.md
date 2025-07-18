@@ -1,5 +1,5 @@
 https://chatgpt.com
-https://github.com/Konnitiwa768/Astdemm
+https://github.com/Konnitiwa768/Astedmm
 https://google.com
 live at https://konnitiwa768.github.io/Kanic-letter/A.html
 https://konnitiwa768.github.io/Kanic-letter/5o.html
