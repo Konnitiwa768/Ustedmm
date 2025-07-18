@@ -32,7 +32,7 @@ def build_font(svg_files):
             ch = get_char_from_filename(svg_path)
             glyph = font.createChar(ord(ch))
             glyph.importOutlines(svg_path)
-            glyph.width = 1000
+            glyph.width = 100
             print(f"✔️ {svg_path} → '{ch}'")
         except Exception as e:
             print(f"⚠️ {svg_path} エラー: {e}")
