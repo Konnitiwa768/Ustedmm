@@ -20,7 +20,7 @@ jobs:
 
       - name: 🧱 Build TTF font with FontForge script
         run: |
-          fontforge -script armodina.py
+          fontforge -script build_font.py
 
       - name: 📝 Commit and push updated font
         run: |
