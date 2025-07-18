@@ -1,7 +1,7 @@
 import svgwrite
 import os
 
-output_dir = "parallel_letters"
+output_dir = "letters"
 os.makedirs(output_dir, exist_ok=True)
 
 WIDTH, HEIGHT = 100, 100
