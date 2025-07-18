@@ -1,4 +1,4 @@
-name: Build Font and Push
+name: Build Font and Push b
 
 on:
   push:
