@@ -1,7 +1,7 @@
-# build_font.py
 import subprocess
 import os
 import fontforge
+import fontforge.psMat  # 追加
 
 OUTPUT_TTF = "fonts/custom_font3.ttf"
 
@@ -32,7 +32,11 @@ def build_font(svg_files):
             ch = get_char_from_filename(svg_path)
             glyph = font.createChar(ord(ch))
             glyph.importOutlines(svg_path)
-            glyph.width = 100
+
+            # 10倍スケール
+            glyph.transform(fontforge.psMat.scale(10))
+
+            glyph.width = 10000  # 10倍に合わせて幅も拡大
             print(f"✔️ {svg_path} → '{ch}'")
         except Exception as e:
             print(f"⚠️ {svg_path} エラー: {e}")
